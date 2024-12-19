@@ -2,6 +2,7 @@ import 'package:barcode_scanner_app/src/common/dependency_injectors/dependency_i
 import 'package:barcode_scanner_app/src/features/scanner/controllers/scanner_controller.dart';
 import 'package:barcode_scanner_app/src/features/scanner/models/scanner_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
+import 'package:barcode_scanner_app/src/features/settings/routes/setting_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -27,6 +28,14 @@ class _ResultScannerViewState extends State<ResultScannerView> {
       appBar: AppBar(
         centerTitle: false,
         title: const Text('Scanner'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings_outlined),
+            onPressed: () {
+              context.push(SettingRoutes.setting);
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(

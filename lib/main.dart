@@ -1,5 +1,6 @@
 import 'package:barcode_scanner_app/src/common/dependency_injectors/dependency_injector.dart';
 import 'package:barcode_scanner_app/src/common/routes/routes.dart';
+import 'package:barcode_scanner_app/src/features/settings/controllers/setting_controller.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -15,17 +16,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Barcode Scanner App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData.dark(
-        useMaterial3: true,
-      ),
-      themeMode: ThemeMode.system,
-      routerConfig: Routes.routes,
+    return ValueListenableBuilder(
+      valueListenable: locator<SettingController>(),
+      builder: (context, value, widget) {
+        return MaterialApp.router(
+          title: 'Barcode Scanner App',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.light(
+            useMaterial3: true,
+          ),
+          darkTheme: ThemeData.dark(
+            useMaterial3: true,
+          ),
+          themeMode: value.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
+          routerConfig: Routes.routes,
+        );
+      },
     );
   }
 }

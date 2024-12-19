@@ -1,5 +1,6 @@
 import 'package:barcode_scanner_app/src/features/permission/controllers/permission_controller.dart';
 import 'package:barcode_scanner_app/src/features/permission/repositories/permission_repository.dart';
+import 'package:barcode_scanner_app/src/features/scanner/controllers/scanner_controller.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
@@ -7,6 +8,7 @@ final locator = GetIt.instance;
 void dependencyInjector() {
   // _startStorageService();
   _startFeaturePermission();
+  _startFeatureScanner();
   // _startFeatureSetting();
 }
 
@@ -24,6 +26,12 @@ void _startFeaturePermission() {
     () => PermissionControllerImpl(
       permissionRepository: locator<PermissionRepository>(),
     ),
+  );
+}
+
+void _startFeatureScanner() {
+  locator.registerLazySingleton<ScannerController>(
+    () => ScannerControllerImpl(),
   );
 }
 

@@ -6,6 +6,6 @@ class Constants {
 
   static const String pathChannel = String.fromEnvironment(
     'pathChannel',
-    defaultValue: 'br.com.williamfranco.decibel_monitor/decibel',
+    defaultValue: 'br.com.williamfranco.barcode_scanner_app/camera',
   );
 }

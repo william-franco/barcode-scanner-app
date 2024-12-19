@@ -1,6 +1,7 @@
 import 'package:barcode_scanner_app/src/common/dependency_injectors/dependency_injector.dart';
 import 'package:barcode_scanner_app/src/features/permission/controllers/permission_controller.dart';
 import 'package:barcode_scanner_app/src/features/permission/models/permission_model.dart';
+import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,7 +26,7 @@ class _PermissionViewState extends State<PermissionView> {
 
   void _checkPermissionState() {
     if (permissionController.value.isGranted) {
-      // context.go(DecibelRoutes.decibel);
+      context.go(ScannerRoutes.resultScanner);
     }
   }
 

@@ -43,9 +43,10 @@ class _ResultScannerViewState extends State<ResultScannerView> {
           children: [
             ValueListenableBuilder<ScannerModel>(
               valueListenable: scannerController,
-              builder: (context, model, child) {
-                debugPrint('Barcode Result: ${model.scannedValue}');
-                return SelectableText('Barcode Result: ${model.scannedValue}');
+              builder: (context, scannerModel, child) {
+                debugPrint('Barcode Result: ${scannerModel.scannedValue}');
+                return SelectableText(
+                    'Barcode Result: ${scannerModel.scannedValue}');
               },
             ),
             const SizedBox(height: 20),

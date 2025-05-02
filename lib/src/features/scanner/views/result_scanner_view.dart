@@ -1,6 +1,5 @@
 import 'package:barcode_scanner_app/src/common/dependency_injectors/dependency_injector.dart';
 import 'package:barcode_scanner_app/src/features/scanner/controllers/scanner_controller.dart';
-import 'package:barcode_scanner_app/src/features/scanner/models/scanner_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
 import 'package:barcode_scanner_app/src/features/settings/routes/setting_routes.dart';
 import 'package:flutter/material.dart';
@@ -41,12 +40,15 @@ class _ResultScannerViewState extends State<ResultScannerView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ValueListenableBuilder<ScannerModel>(
-              valueListenable: scannerController,
-              builder: (context, scannerModel, child) {
-                debugPrint('Barcode Result: ${scannerModel.scannedValue}');
+            ListenableBuilder(
+              listenable: scannerController,
+              builder: (context, child) {
+                debugPrint(
+                  'Barcode Result: ${scannerController.scannerModel.scannedValue}',
+                );
                 return SelectableText(
-                    'Barcode Result: ${scannerModel.scannedValue}');
+                  'Barcode Result: ${scannerController.scannerModel.scannedValue}',
+                );
               },
             ),
             const SizedBox(height: 20),
@@ -56,7 +58,7 @@ class _ResultScannerViewState extends State<ResultScannerView> {
               onPressed: () async {
                 await _openCameraScannerView(context);
               },
-            )
+            ),
           ],
         ),
       ),

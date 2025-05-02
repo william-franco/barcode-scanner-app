@@ -1,24 +1,23 @@
 import 'package:barcode_scanner_app/src/features/scanner/views/camera_scanner_view.dart';
 import 'package:barcode_scanner_app/src/features/scanner/views/result_scanner_view.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ScannerRoutes {
-  static const String resultScanner = '/result-scanner';
-  static const String cameraScanner = '/camera-scanner';
+  static String get resultScanner => '/result-scanner';
+  static String get cameraScanner => '/camera-scanner';
 
-  static final List<GoRoute> routes = [
+  final routes = [
     GoRoute(
       path: resultScanner,
-      pageBuilder: (context, state) => const MaterialPage(
-        child: ResultScannerView(),
-      ),
+      builder: (context, state) {
+        return const ResultScannerView();
+      },
     ),
     GoRoute(
       path: cameraScanner,
-      pageBuilder: (context, state) => const MaterialPage(
-        child: CameraScannerView(),
-      ),
+      builder: (context, state) {
+        return const CameraScannerView();
+      },
     ),
   ];
 }

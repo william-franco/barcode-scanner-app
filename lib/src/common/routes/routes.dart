@@ -4,13 +4,15 @@ import 'package:barcode_scanner_app/src/features/settings/routes/setting_routes.
 import 'package:go_router/go_router.dart';
 
 class Routes {
-  static final GoRouter routes = GoRouter(
+  static String get home => PermissionRoutes.permisson;
+
+  GoRouter routes = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: PermissionRoutes.permisson,
+    initialLocation: home,
     routes: [
-      ...PermissionRoutes.routes,
-      ...ScannerRoutes.routes,
-      ...SettingRoutes.routes,
+      ...PermissionRoutes().routes,
+      ...ScannerRoutes().routes,
+      ...SettingRoutes().routes,
     ],
   );
 }

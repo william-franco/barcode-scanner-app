@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "br.com.williamfranco.barcode_scanner_app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.2.12479018"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

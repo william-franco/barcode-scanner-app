@@ -1,4 +1,3 @@
-import 'package:barcode_scanner_app/src/common/dependency_injectors/dependency_injector.dart';
 import 'package:barcode_scanner_app/src/features/scanner/controllers/scanner_controller.dart';
 import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
 import 'package:barcode_scanner_app/src/features/settings/routes/setting_routes.dart';
@@ -6,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ResultScannerView extends StatefulWidget {
-  const ResultScannerView({super.key});
+  final ScannerController scannerController;
+
+  const ResultScannerView({super.key, required this.scannerController});
 
   @override
   State<ResultScannerView> createState() => _ResultScannerViewState();
@@ -18,7 +19,7 @@ class _ResultScannerViewState extends State<ResultScannerView> {
   @override
   void initState() {
     super.initState();
-    scannerController = locator<ScannerController>();
+    scannerController = widget.scannerController;
   }
 
   @override

@@ -59,31 +59,21 @@ class _CameraScannerViewState extends State<CameraScannerView> {
               },
             ),
           ),
-          BarcodeOverlayWidget(
-            overlayColour: Colors.black.withOpacity(0.5),
-          ),
+          BarcodeOverlayWidget(overlayColour: Colors.black.withOpacity(0.5)),
           Padding(
-            padding: const EdgeInsets.only(
-              top: 18.0,
-            ),
+            padding: const EdgeInsets.only(top: 18.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ),
+                  icon: const Icon(Icons.arrow_back, color: Colors.white),
                   onPressed: () {
                     context.pop();
                   },
                 ),
                 const Text(
                   'Scanner',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 const SizedBox.shrink(),
               ],

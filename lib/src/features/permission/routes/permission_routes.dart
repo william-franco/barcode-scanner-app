@@ -1,5 +1,5 @@
 import 'package:barcode_scanner_app/src/common/dependency_injectors/dependency_injector.dart';
-import 'package:barcode_scanner_app/src/features/permission/controllers/permission_controller.dart';
+import 'package:barcode_scanner_app/src/features/permission/view_models/permission_view_model.dart';
 import 'package:barcode_scanner_app/src/features/permission/views/permission_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,7 +13,7 @@ class PermissionRoutes {
       path: permisson,
       builder: (context, state) {
         return PermissionView(
-          permissionController: locator<PermissionController>(),
+          permissionViewModel: locator<PermissionViewModel>(),
         );
       },
     ),

@@ -1,25 +1,22 @@
-import 'package:barcode_scanner_app/src/features/scanner/controllers/scanner_controller.dart';
+import 'package:barcode_scanner_app/src/features/scanner/view_models/scanner_view_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
 import 'package:barcode_scanner_app/src/features/settings/routes/setting_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ResultScannerView extends StatefulWidget {
-  final ScannerController scannerController;
+  final ScannerViewModel scannerViewModel;
 
-  const ResultScannerView({super.key, required this.scannerController});
+  const ResultScannerView({super.key, required this.scannerViewModel});
 
   @override
   State<ResultScannerView> createState() => _ResultScannerViewState();
 }
 
 class _ResultScannerViewState extends State<ResultScannerView> {
-  late final ScannerController scannerController;
-
   @override
   void initState() {
     super.initState();
-    scannerController = widget.scannerController;
   }
 
   @override
@@ -42,13 +39,13 @@ class _ResultScannerViewState extends State<ResultScannerView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ListenableBuilder(
-              listenable: scannerController,
+              listenable: widget.scannerViewModel,
               builder: (context, child) {
                 debugPrint(
-                  'Barcode Result: ${scannerController.scannerModel.scannedValue}',
+                  'Barcode Result: ${widget.scannerViewModel.scannerModel.scannedValue}',
                 );
                 return SelectableText(
-                  'Barcode Result: ${scannerController.scannerModel.scannedValue}',
+                  'Barcode Result: ${widget.scannerViewModel.scannerModel.scannedValue}',
                 );
               },
             ),
@@ -73,6 +70,6 @@ class _ResultScannerViewState extends State<ResultScannerView> {
     // must be checked after an asynchronous gap.
     if (!context.mounted) return;
 
-    scannerController.updateValue(result ?? '');
+    widget.scannerViewModel.updateValue(result ?? '');
   }
 }

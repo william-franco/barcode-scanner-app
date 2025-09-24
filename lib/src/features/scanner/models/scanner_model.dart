@@ -1,7 +1,8 @@
 class ScannerModel {
-  String scannedValue;
+  final String scannedValue;
 
-  ScannerModel({
-    this.scannedValue = '',
-  });
+  ScannerModel({this.scannedValue = ''});
+
+  ScannerModel copyWith({String? scannedValue}) =>
+      ScannerModel(scannedValue: scannedValue ?? this.scannedValue);
 }

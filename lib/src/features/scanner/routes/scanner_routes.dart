@@ -1,5 +1,5 @@
 import 'package:barcode_scanner_app/src/common/dependency_injectors/dependency_injector.dart';
-import 'package:barcode_scanner_app/src/features/scanner/controllers/scanner_controller.dart';
+import 'package:barcode_scanner_app/src/features/scanner/view_models/scanner_view_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/views/camera_scanner_view.dart';
 import 'package:barcode_scanner_app/src/features/scanner/views/result_scanner_view.dart';
 import 'package:go_router/go_router.dart';
@@ -20,9 +20,7 @@ class ScannerRoutes {
     GoRoute(
       path: resultScanner,
       builder: (context, state) {
-        return ResultScannerView(
-          scannerController: locator<ScannerController>(),
-        );
+        return ResultScannerView(scannerViewModel: locator<ScannerViewModel>());
       },
     ),
   ];

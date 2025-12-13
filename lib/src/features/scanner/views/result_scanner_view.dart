@@ -20,6 +20,11 @@ class _ResultScannerViewState extends State<ResultScannerView> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

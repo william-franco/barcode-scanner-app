@@ -1,3 +1,5 @@
+import 'package:barcode_scanner_app/src/common/state_management/state_management.dart';
+import 'package:barcode_scanner_app/src/features/permission/models/permission_model.dart';
 import 'package:barcode_scanner_app/src/features/permission/view_models/permission_view_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +29,7 @@ class _PermissionViewState extends State<PermissionView> {
   }
 
   void _checkPermissionState() {
-    if (widget.permissionViewModel.permissionModel.isGranted) {
+    if (widget.permissionViewModel.state.isGranted) {
       context.go(ScannerRoutes.resultScanner);
     }
   }
@@ -37,10 +39,10 @@ class _PermissionViewState extends State<PermissionView> {
     return Scaffold(
       appBar: AppBar(centerTitle: false, title: const Text('Permission Check')),
       body: Center(
-        child: ListenableBuilder(
-          listenable: widget.permissionViewModel,
-          builder: (context, child) {
-            if (widget.permissionViewModel.permissionModel.isGranted) {
+        child: StateBuilderWidget<PermissionViewModel, PermissionModel>(
+          viewModel: widget.permissionViewModel,
+          builder: (context, permissionModel) {
+            if (permissionModel.isGranted) {
               return Text(
                 'Permission granted. Navigating...',
                 style: Theme.of(context).textTheme.headlineMedium,

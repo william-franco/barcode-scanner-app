@@ -1,3 +1,5 @@
+import 'package:barcode_scanner_app/src/common/state_management/state_management.dart';
+import 'package:barcode_scanner_app/src/features/scanner/models/scanner_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/view_models/scanner_view_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
 import 'package:barcode_scanner_app/src/features/settings/routes/setting_routes.dart';
@@ -43,14 +45,12 @@ class _ResultScannerViewState extends State<ResultScannerView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ListenableBuilder(
-              listenable: widget.scannerViewModel,
-              builder: (context, child) {
-                debugPrint(
-                  'Barcode Result: ${widget.scannerViewModel.scannerModel.scannedValue}',
-                );
+            StateBuilderWidget<ScannerViewModel, ScannerModel>(
+              viewModel: widget.scannerViewModel,
+              builder: (context, scannerModel) {
+                debugPrint('Barcode Result: ${scannerModel.scannedValue}');
                 return SelectableText(
-                  'Barcode Result: ${widget.scannerViewModel.scannerModel.scannedValue}',
+                  'Barcode Result: ${scannerModel.scannedValue}',
                 );
               },
             ),

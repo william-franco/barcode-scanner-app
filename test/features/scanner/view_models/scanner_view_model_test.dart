@@ -93,22 +93,23 @@ void main() {
         expect(emittedStates.first.scannedValue, equals(''));
       });
 
-      test('should not notify listeners when the same value is emitted twice '
-          '(StateManagement identical check)', () {
-        // arrange
-        viewModel.updateValue('same');
-        int notifyCount = 0;
-        viewModel.addListener(() => notifyCount++);
+      test(
+        'should notify when same scanned value is set again '
+        '(copyWith yields a new model; emitState is not identical)',
+        () {
+          // arrange
+          viewModel.updateValue('same');
+          int notifyCount = 0;
+          viewModel.addListener(() => notifyCount++);
 
-        // act — emitState uses `identical` check; ScannerModel is a new
-        // instance each time via copyWith, so this WILL notify.
-        // This test documents the current behaviour explicitly.
-        viewModel.updateValue('same');
+          // act
+          viewModel.updateValue('same');
 
-        // assert — copyWith always returns a new instance, so listeners fire
-        expect(notifyCount, equals(1));
-        expect(viewModel.state.scannedValue, equals('same'));
-      });
+          // assert
+          expect(notifyCount, equals(1));
+          expect(viewModel.state.scannedValue, equals('same'));
+        },
+      );
     });
   });
 }

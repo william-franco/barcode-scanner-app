@@ -5,13 +5,14 @@ import 'package:flutter/foundation.dart';
 typedef _ViewModel = StateManagement<ScannerModel>;
 
 abstract interface class ScannerViewModel extends _ViewModel {
-  ScannerViewModel(super.initialState);
-
   void updateValue(String result);
 }
 
 class ScannerViewModelImpl extends _ViewModel implements ScannerViewModel {
-  ScannerViewModelImpl() : super(ScannerModel());
+  ScannerViewModelImpl();
+
+  @override
+  ScannerModel build() => ScannerModel();
 
   @override
   void updateValue(String result) {

@@ -95,7 +95,7 @@ void main() {
 
       test(
         'should notify when same scanned value is set again '
-        '(copyWith yields a new model; emitState is not identical)',
+        '(copyWith yields a new model; emitState uses ==)',
         () {
           // arrange
           viewModel.updateValue('same');

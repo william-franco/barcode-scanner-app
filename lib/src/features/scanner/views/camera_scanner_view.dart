@@ -59,7 +59,7 @@ class _CameraScannerViewState extends State<CameraScannerView> {
               },
             ),
           ),
-          BarcodeOverlayWidget(overlayColour: Colors.black.withOpacity(0.5)),
+          BarcodeOverlayWidget(overlayColour: Colors.black.withValues(alpha: 0.5)),
           Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: Row(

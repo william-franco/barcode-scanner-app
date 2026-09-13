@@ -1,12 +1,26 @@
 # Barcode Scanner App
 
-Barcode and QR code scanner built with mobile_scanner.
+Mobile app for scanning barcodes and QR codes using the device camera.
+
+The scanner pipeline decodes values in real time and surfaces results in a dedicated UI flow.
+
+Built with a modular feature layout so camera, routing, and shared services stay isolated.
+
+## Structure
+
+```mermaid
+flowchart LR
+  ScannerRoutes --> ResultScannerView
+  ResultScannerView --> ScannerViewModel
+  ScannerViewModel --> MobileScannerPlugin
+  MobileScannerPlugin --> DeviceCamera[Device camera]
+```
 
 ## Stack
 
 | Technology | Version |
 |------------|---------|
-| Dart SDK | ^3.13.2 |
+| Dart SDK | ^3.13.3 |
 | cupertino_icons | ^1.0.8 |
 | get_it | ^9.2.1 |
 | go_router | ^17.2.3 |

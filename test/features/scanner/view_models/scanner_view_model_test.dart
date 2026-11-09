@@ -93,23 +93,20 @@ void main() {
         expect(emittedStates.first.scannedValue, equals(''));
       });
 
-      test(
-        'should notify when same scanned value is set again '
-        '(copyWith yields a new model; emitState uses ==)',
-        () {
-          // arrange
-          viewModel.updateValue('same');
-          int notifyCount = 0;
-          viewModel.addListener(() => notifyCount++);
+      test('should notify when same scanned value is set again '
+          '(copyWith yields a new model; emitState uses ==)', () {
+        // arrange
+        viewModel.updateValue('same');
+        int notifyCount = 0;
+        viewModel.addListener(() => notifyCount++);
 
-          // act
-          viewModel.updateValue('same');
+        // act
+        viewModel.updateValue('same');
 
-          // assert
-          expect(notifyCount, equals(1));
-          expect(viewModel.state.scannedValue, equals('same'));
-        },
-      );
+        // assert
+        expect(notifyCount, equals(1));
+        expect(viewModel.state.scannedValue, equals('same'));
+      });
     });
   });
 }

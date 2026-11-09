@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class BarcodeOverlayWidget extends StatelessWidget {
   final Color overlayColour;
 
-  const BarcodeOverlayWidget({
-    super.key,
-    required this.overlayColour,
-  });
+  const BarcodeOverlayWidget({super.key, required this.overlayColour});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +15,7 @@ class BarcodeOverlayWidget extends StatelessWidget {
     return Stack(
       children: [
         ColorFiltered(
-          colorFilter: ColorFilter.mode(
-            overlayColour,
-            BlendMode.srcOut,
-          ),
+          colorFilter: ColorFilter.mode(overlayColour, BlendMode.srcOut),
           child: Stack(
             children: [
               Container(
@@ -50,10 +44,7 @@ class BarcodeOverlayWidget extends StatelessWidget {
           alignment: Alignment.center,
           child: CustomPaint(
             // foregroundPainter: BorderPaintWidget(),
-            child: SizedBox(
-              width: scanArea + 25,
-              height: scanArea + 25,
-            ),
+            child: SizedBox(width: scanArea + 25, height: scanArea + 25),
           ),
         ),
       ],

@@ -14,16 +14,8 @@ class BorderPaintWidget extends CustomPainter {
       size.width - 2 * width,
       size.height - 2 * width,
     );
-    final rrect = RRect.fromRectAndRadius(
-      rect,
-      const Radius.circular(radius),
-    );
-    const clippingRect0 = Rect.fromLTWH(
-      0,
-      0,
-      tRadius,
-      tRadius,
-    );
+    final rrect = RRect.fromRectAndRadius(rect, const Radius.circular(radius));
+    const clippingRect0 = Rect.fromLTWH(0, 0, tRadius, tRadius);
     final clippingRect1 = Rect.fromLTWH(
       size.width - tRadius,
       0,
@@ -75,15 +67,20 @@ class OverlayWithHolePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()..color = Colors.black54;
     canvas.drawPath(
-        Path.combine(
-          PathOperation.difference,
-          Path()..addRect(Rect.fromLTWH(0, 0, size.width, size.height)),
-          Path()
-            ..addOval(Rect.fromCircle(
-                center: Offset(size.width - 44, size.height - 44), radius: 40))
-            ..close(),
-        ),
-        paint);
+      Path.combine(
+        PathOperation.difference,
+        Path()..addRect(Rect.fromLTWH(0, 0, size.width, size.height)),
+        Path()
+          ..addOval(
+            Rect.fromCircle(
+              center: Offset(size.width - 44, size.height - 44),
+              radius: 40,
+            ),
+          )
+          ..close(),
+      ),
+      paint,
+    );
   }
 
   @override

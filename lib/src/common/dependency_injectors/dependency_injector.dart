@@ -1,4 +1,5 @@
 import 'package:barcode_scanner_app/src/common/services/storage_service.dart';
+import 'package:barcode_scanner_app/src/common/services/url_launcher_service.dart';
 import 'package:barcode_scanner_app/src/features/permission/view_models/permission_view_model.dart';
 import 'package:barcode_scanner_app/src/features/permission/repositories/permission_repository.dart';
 import 'package:barcode_scanner_app/src/features/scanner/view_models/scanner_view_model.dart';
@@ -9,6 +10,9 @@ import 'package:get_it/get_it.dart';
 final locator = GetIt.instance;
 
 void dependencyInjector() {
+  locator.registerLazySingleton<UrlLauncherService>(
+    () => UrlLauncherServiceImpl(),
+  );
   _startStorageService();
   _startFeaturePermission();
   _startFeatureScanner();
@@ -36,7 +40,10 @@ void _startFeatureScanner() {
 
 void _startFeatureSetting() {
   locator.registerCachedFactory<SettingRepository>(
-    () => SettingRepositoryImpl(storageService: locator<StorageService>()),
+    () => SettingRepositoryImpl(
+      storageService: locator<StorageService>(),
+      urlLauncherService: locator<UrlLauncherService>(),
+    ),
   );
   locator.registerLazySingleton<SettingViewModel>(
     () => SettingViewModelImpl(settingRepository: locator<SettingRepository>()),

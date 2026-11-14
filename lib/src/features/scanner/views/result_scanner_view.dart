@@ -3,7 +3,7 @@ import 'package:barcode_scanner_app/src/features/scanner/models/scanner_model.da
 import 'package:barcode_scanner_app/src/features/scanner/view_models/scanner_view_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
 import 'package:barcode_scanner_app/src/features/settings/routes/setting_routes.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class ResultScannerView extends StatefulWidget {

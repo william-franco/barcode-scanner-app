@@ -2,7 +2,7 @@ import 'package:barcode_scanner_app/src/common/state_management/state_management
 import 'package:barcode_scanner_app/src/features/permission/models/permission_model.dart';
 import 'package:barcode_scanner_app/src/features/permission/view_models/permission_view_model.dart';
 import 'package:barcode_scanner_app/src/features/scanner/routes/scanner_routes.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class PermissionView extends StatefulWidget {
